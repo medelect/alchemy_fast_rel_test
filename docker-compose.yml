@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-#  nudges:
+#  web:
 #    build: .
 #    command: uvicorn app.main:app --host 0.0.0.0 --port 80
 #    volumes:
@@ -12,15 +12,15 @@ services:
 #      - db
 
   db_alchemy:
-    image: postgres:12.0-alpine
+    image: postgres:15-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=username
       - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=nudges
+      - POSTGRES_DB=web
     expose:
-      - 5432
+      - "5432:5432"
 
 volumes:
   postgres_data:
